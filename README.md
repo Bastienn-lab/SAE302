@@ -56,7 +56,7 @@ SAEdiscord/
 ## ⚙️ Installation & Configuration  
 
 Pour installer et configurer le projet, veuillez consulter le document :  
-📄 **[Installation.docx](./Installation.docx)**  
+📄 **[Installation.pdf](./Installation.pdf)**  
 
 Ce document contient toutes les instructions détaillées pour :  
 ✔️ Installer la base de données MySQL  
