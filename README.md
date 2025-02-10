@@ -4,7 +4,7 @@ Un projet Android permettant d'afficher la liste des utilisateurs et leurs messa
 ---
 
 ## 🚀 Présentation  
-SAEdiscord est une application Android qui récupère et affiche :  
+TraceCord est une application Android qui récupère et affiche :  
 ✔️ La liste des utilisateurs stockés dans une base de données MySQL.  
 ✔️ Les messages envoyés par un utilisateur lorsqu'on clique sur son nom.  
 ✔️ Des détails sur chaque message (contenu, destinataire, score de toxicité, etc.).  
@@ -25,7 +25,7 @@ L’application communique avec un serveur PHP via des requêtes API REST et uti
 
 ## 📂 Structure du projet  
 ```plaintext
-SAEdiscord/
+TraceCord/
 │── app/
 │   ├── src/
 │   │   ├── main/
