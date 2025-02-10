@@ -52,62 +52,19 @@ SAEdiscord/
 ```
 ---
 
+
 ## ⚙️ Installation & Configuration  
 
-### 1️⃣ Installation de la base de données  
-CREATE DATABASE Discord;
-USE Discord;
+Pour installer et configurer le projet, veuillez consulter le document :  
+📄 **[Installation.docx](./Installation.docx)**  
 
-CREATE TABLE messages (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nom_utilisateur VARCHAR(255),
-    message TEXT,
-    date DATETIME,
-    receveur VARCHAR(255),
-    message_length INT
-);
+Ce document contient toutes les instructions détaillées pour :  
+✔️ Installer la base de données MySQL  
+✔️ Configurer le serveur PHP  
+✔️ Tester l'API  
+✔️ Lancer l'application Android  
+✔️ Déboguer les erreurs courantes  
 
-📌 Vérifier que des données existent !
-SELECT * FROM messages;
-
-2️⃣ Configurer le serveur PHP
-📌 Modifier config.php avec vos identifiants MySQL.
-<?php
-$host = "localhost";
-$dbname = "Discord";
-$user = "root";
-$pass = "root";
-?>
-
-📌 Placer les fichiers PHP (get_users.php et get_messages.php) dans /var/www/html/.
-sudo mv get_users.php /var/www/html/
-sudo mv get_messages.php /var/www/html/
-
-📌 Redémarrer Apache pour activer les changements.
-sudo systemctl restart apache2
-
-3️⃣ Tester l’API
-Liste des utilisateurs : 👉 http://10.3.122.108/get_users.php
-Messages d’un utilisateur : 👉 http://10.3.122.108/get_messages.php?username=lestuff
-Si tout fonctionne bien, vous devriez voir des données en JSON.
-
-📲 Lancer l’application Android
-Ouvrir le projet dans Android Studio.
-Vérifier la configuration du Gradle (app/build.gradle):
-dependencies {
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-}
-
-Lancer l’émulateur ou connecter un téléphone en mode développeur.
-Exécuter le projet en cliquant sur ▶️ dans Android Studio.
-
-🐞 Débogage et Problèmes Courants
-Problème	Solution
-Aucun utilisateur trouvé	Vérifier que la base de données contient bien des utilisateurs (SELECT * FROM messages;)
-Page blanche sur API	Activer les erreurs PHP (error_reporting(E_ALL);) et vérifier les logs Apache (sudo tail -f /var/log/apache2/error.log)
-L'application crash	Regarder les logs dans Android Studio (Logcat) et vérifier que Retrofit reçoit bien une réponse
-Impossible de se connecter à MySQL	Vérifier le bind-address (0.0.0.0 dans /etc/mysql/my.cnf) et autoriser les connexions externes
 
 🚀 Développé par
 Bastien Labeste, Robin Kwiatkowski et Quentin Chambelland
