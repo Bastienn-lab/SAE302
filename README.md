@@ -24,23 +24,32 @@ L’application communique avec un serveur PHP via des requêtes API REST et uti
 ---
 
 ## 📂 Structure du projet  
-SAEdiscord/ │── app/ │ ├── src/ │ │ ├── main/ │ │ │ ├── java/com/example/saediscord/ │ │ │ │ ├── MainActivity.java # Liste des utilisateurs
-│ │ │ │ ├── MessagesActivity.java # Liste des messages d’un utilisateur
-│ │ │ │ ├── ApiService.java # Interface Retrofit
-│ │ │ │ ├── ApiClient.java # Initialisation Retrofit
-│ │ │ │ ├── DatabaseHelper.java # Gestion des requêtes SQLite/MySQL
-│ │ │ │ ├── Message.java # Modèle de données
-│ │ │ │ ├── MessagesAdapter.java # Adapter pour afficher les messages
-│ │ │ │ ├── UsersAdapter.java # Adapter pour afficher les utilisateurs
-│ │ │ ├── res/ │ │ │ │ ├── layout/ │ │ │ │ │ ├── activity_main.xml # UI liste des utilisateurs
-│ │ │ │ │ ├── activity_messages.xml # UI liste des messages
-│ │ │ │ ├── values/ │ │ │ │ │ ├── strings.xml # Textes de l’UI
-│── server/ # Serveur API PHP
-│ ├── get_users.php # Récupération des utilisateurs
-│ ├── get_messages.php # Récupération des messages d’un utilisateur
-│ ├── config.php # Configuration MySQL
-│── README.md # Documentation
-
+```plaintext
+SAEdiscord/
+│── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/example/saediscord/
+│   │   │   │   ├── MainActivity.java            # Liste des utilisateurs  
+│   │   │   │   ├── MessagesActivity.java        # Liste des messages d’un utilisateur  
+│   │   │   │   ├── ApiService.java              # Interface Retrofit  
+│   │   │   │   ├── ApiClient.java               # Initialisation Retrofit  
+│   │   │   │   ├── DatabaseHelper.java          # Gestion des requêtes SQLite/MySQL  
+│   │   │   │   ├── Message.java                 # Modèle de données  
+│   │   │   │   ├── MessagesAdapter.java         # Adapter pour afficher les messages  
+│   │   │   │   ├── UsersAdapter.java            # Adapter pour afficher les utilisateurs  
+│   │   │   ├── res/
+│   │   │   │   ├── layout/
+│   │   │   │   │   ├── activity_main.xml        # UI liste des utilisateurs  
+│   │   │   │   │   ├── activity_messages.xml    # UI liste des messages  
+│   │   │   │   ├── values/
+│   │   │   │   │   ├── strings.xml              # Textes de l’UI  
+│── server/                                      # Serveur API PHP  
+│   ├── get_users.php                            # Récupération des utilisateurs  
+│   ├── get_messages.php                         # Récupération des messages d’un utilisateur  
+│   ├── config.php                               # Configuration MySQL  
+│── README.md                                    # Documentation  
+```
 ---
 
 ## ⚙️ Installation & Configuration  
