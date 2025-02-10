@@ -1,4 +1,4 @@
-# 📌 README - SAEdiscord  
+# 📌 README - TraceCord  
 Un projet Android permettant d'afficher la liste des utilisateurs et leurs messages depuis une base de données MySQL.  
 
 ---
