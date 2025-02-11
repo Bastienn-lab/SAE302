@@ -35,20 +35,27 @@ TraceCord/
 │   │   │   │   ├── ApiService.java              # Interface Retrofit  
 │   │   │   │   ├── ApiClient.java               # Initialisation Retrofit  
 │   │   │   │   ├── DatabaseHelper.java          # Gestion des requêtes SQLite/MySQL  
-│   │   │   │   ├── Message.java                 # Modèle de données  
+│   │   │   │   ├── Message.java                 # Modèle de données
+│   │   │   │   ├── User.java                    # Modèle de données
 │   │   │   │   ├── MessagesAdapter.java         # Adapter pour afficher les messages  
-│   │   │   │   ├── UsersAdapter.java            # Adapter pour afficher les utilisateurs  
 │   │   │   ├── res/
 │   │   │   │   ├── layout/
 │   │   │   │   │   ├── activity_main.xml        # UI liste des utilisateurs  
-│   │   │   │   │   ├── activity_messages.xml    # UI liste des messages  
+│   │   │   │   │   ├── activity_messages.xml    # UI liste des messages
+│   │   │   │   │   ├── item_message.xml         # 
 │   │   │   │   ├── values/
-│   │   │   │   │   ├── strings.xml              # Textes de l’UI  
+│   │   │   │   │   ├── strings.xml              # Textes de l’UI
+│   │   │   │   │   ├── colors.xml               #
+│   │   │   │   │   ├── themes.xml               #
 │── server/                                      # Serveur API PHP  
 │   ├── get_users.php                            # Récupération des utilisateurs  
 │   ├── get_messages.php                         # Récupération des messages d’un utilisateur  
-│   ├── config.php                               # Configuration MySQL  
-│── README.md                                    # Documentation  
+│   ├── config.php                               # Configuration MySQL
+|   ├── bot_discord.py                           # Programme du Bot
+|   ├── DiscordDataProcessor.java                # Code java pour exporter les infos dans la BDD
+|   ├── selected_messages.txt                    # Fichier texte contenant les messages à exporter
+│── README.md                                    # Documentation
+│── Installation.pdf                             # Document d'installation 
 ```
 ---
 
