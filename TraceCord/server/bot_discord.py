@@ -6,28 +6,42 @@ import os
 import sys
 import asyncio
 
-
+#  CONFIGURATION DU BOT  
+# On active les "intents" pr permettre au bot de voir les msgs + interagir avec le contenu  
 intents = discord.Intents.default()
 intents.messages = True
 intents.message_content = True  
+
+# Création du bot avec "!" comme préfixe de cmd  
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-
+#  CONFIGURATION ENVIRONNEMENT  
+# Ajout du chemin vers les exécutables pr exécuter Java depuis le script  
 os.environ["PATH"] += ":/usr/bin"
 
-
+#  LISTE DES MOTS "TOXIQUES"  
+# Ces mots seront utilisés pr détecter un msg potentiellement problématique  
 toxic_words = ['badword1', 'badword2']
 
-
 def clean_message(content, message):
+    """
+    Nettoie le msg :
+    - Remplace les mentions directes (<@user_id>) par @pseudo
+    - Échappe les caractères Markdown pr éviter la mise en forme auto
+    - Échappe aussi les mentions (@everyone, @here)
+    """
     for user in message.mentions:
         content = content.replace(f'<@{user.id}>', f'@{user.display_name}')
     content = discord.utils.escape_markdown(content)
     content = discord.utils.escape_mentions(content)
     return content
 
-
 async def run_java():
+    """
+     Compile et exécute le programme Java via une commande shell
+    - Utilisé pr traiter et analyser les msgs Discord
+    - Retourne le résultat ou une erreur si ça plante
+    """
     try:
         command = """
         /usr/bin/javac /home/rt/Téléchargements/SAE-JAVADISCORD/DiscordDataProcessor.java &&
@@ -43,26 +57,31 @@ async def run_java():
         error = execute_process.stderr.strip()
 
         if execute_process.returncode == 0:
-            return f"Résultat de l'exécution :\n{output}"
+            return f"✅ Résultat de l'exécution :\n{output}"
         else:
-            return f"Erreur lors de l'exécution :\n{error}"
+            return f"❌ Erreur lors de l'exécution :\n{error}"
         
     except Exception as e:
-        return f"Erreur inattendue : {str(e)}"
-
+        return f"❌ Erreur inattendue : {str(e)}"
 
 @bot.command()
 async def java(ctx):
-    """ Compile et exécute le programme Java via Discord """
+    """
+     CMD "!java" → Compile et exécute le programme Java directement via Discord  
+    """
     result = await run_java()
     await ctx.send(f"```\n{result}\n```")
 
-
 @bot.event
 async def on_ready():
-    print(f'{bot.user} est connecté à Discord!')
+    """
+     Event appelé qd le bot est prêt  
+    - Affiche un msg dans la console  
+    - Vérifie si le bot a été lancé avec des arguments pr exécuter des cmd spécifiques
+    """
+    print(f'✅ {bot.user} est connecté à Discord!')
 
-   
+    # ⚙ Gestion des args passés au lancement du bot  
     if len(sys.argv) >= 2:
         command = sys.argv[1]
 
@@ -75,21 +94,25 @@ async def on_ready():
                     if channel:
                         asyncio.create_task(selection_from_webhook(nb_messages, channel))
                     else:
-                        print(f"Erreur : Impossible de récupérer le salon avec l'ID {channel_id}.")
+                        print(f"❌ Erreur : Impossible de récupérer le salon avec l'ID {channel_id}.")
                 else:
-                    print("Erreur : Aucun ID de channel spécifié.")
+                    print("❌ Erreur : Aucun ID de channel spécifié.")
             except Exception as e:
-                print(f"Erreur : {e}")
+                print(f"❌ Erreur : {e}")
 
         elif command == "java":
             async def run():
                 result = await run_java()
                 print(result)
-                os._exit(0) n
+                os._exit(0)  # Quitter proprement après exécution
             asyncio.create_task(run())
 
-
 async def selection_from_webhook(nb_messages, channel):
+    """
+     Récupère les `nb_messages` derniers msgs d'un salon  
+    - Nettoie les données
+    - Stocke les infos utiles dans un fichier texte
+    """
     file_path = '/home/rt/Téléchargements/SAE-JAVADISCORD/selected_messages.txt'
 
     try:
@@ -106,46 +129,52 @@ async def selection_from_webhook(nb_messages, channel):
                 message_length = len(message.content)
                 edited_at = message.edited_at.strftime('%Y-%m-%d %H:%M:%S') if message.edited_at else None
                 referenced_message = None
+                
+                #  Vérifie si le msg est une réponse à un autre msg  
                 if message.reference:
                     try:
                         referenced_message = await channel.fetch_message(message.reference.message_id)
                     except (discord.NotFound, discord.Forbidden):
                         referenced_message = None
 
-              
+                #  Enregistrement des données dans le fichier  
                 file.write(f'[{timestamp}] {message.author}: {cleaned_content}\n')
                 if toxicity:
-                    file.write(f'Toxicity: {toxicity}\n')
+                    file.write(f'Toxicité détectée: {toxicity}\n')
                 if reactions:
-                    file.write(f'Reactions: {", ".join(reactions)}\n')
+                    file.write(f'Réactions: {", ".join(reactions)}\n')
                 if attachments:
-                    file.write(f'Attachments: {", ".join(attachments)}\n')
+                    file.write(f'Fichiers joints: {", ".join(attachments)}\n')
                 if mentions:
                     file.write(f'Mentions: {", ".join(mentions)}\n')
                 if roles:
-                    file.write(f'Roles: {", ".join(roles)}\n')
+                    file.write(f'Rôles: {", ".join(roles)}\n')
                 if urls:
-                    file.write(f'Links: {", ".join(urls)}\n')
-                file.write(f'Message length: {message_length}\n')
+                    file.write(f'Liens: {", ".join(urls)}\n')
+                file.write(f'Taille du message: {message_length} caractères\n')
                 if edited_at:
-                    file.write(f'Edited at: {edited_at}\n')
+                    file.write(f'Modifié le: {edited_at}\n')
                 if referenced_message:
-                    file.write(f'Replies to: {referenced_message.author}: {referenced_message.content}\n')
+                    file.write(f'Répond à: {referenced_message.author}: {referenced_message.content}\n')
                 file.write('\n')
 
+        #  Donne les permissions de lecture/écriture au fichier  
         os.chmod(file_path, 0o644)
-        print(f"{nb_messages} derniers messages ont été enregistrés dans {file_path}.")
+        print(f"✅ {nb_messages} derniers msgs ont été enregistrés dans {file_path}.")
 
     except Exception as e:
-        print(f"Erreur lors de l'écriture du fichier : {str(e)}")
-
+        print(f"❌ Erreur lors de l'écriture du fichier : {str(e)}")
 
 @bot.command()
 async def selection(ctx, nb_messages: int, channel: discord.TextChannel = None):
-    """ Récupère les derniers `nb_messages` d'un channel et les stocke. """
+    """
+     CMD "!selection nb_messages [channel]"  
+    - Récupère les derniers msgs d'un salon et les stocke
+    - Si aucun salon n'est précisé, récupère les msgs du salon actuel
+    """
     if channel is None:
         channel = ctx.channel 
     await selection_from_webhook(nb_messages, channel)
 
-
+#  Lancement du bot (remplacer '' par le token Discord)
 bot.run('')
