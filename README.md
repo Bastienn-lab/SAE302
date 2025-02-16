@@ -51,7 +51,7 @@ TraceCord/
 │   │   │   │   │   │   ├── strings.xml              # Textes de l’UI
 │   │   │   │   │   │   ├── colors.xml               #
 │   │   │   │   │   │   ├── themes.xml               #
-│── TraceCordserver/                                      # Serveur API PHP  
+│── TraceCordServer/                                      # Serveur API PHP  
 │   ├── get_users.php                            # Récupération des utilisateurs  
 │   ├── get_messages.php                         # Récupération des messages d’un utilisateur  
 │   ├── config.php                               # Configuration MySQL
