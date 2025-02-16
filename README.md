@@ -8,8 +8,8 @@ TraceCord est une application Android qui récupère et affiche :
 ✔️ La liste des utilisateurs stockés dans une base de données MySQL.  
 ✔️ Les messages envoyés par un utilisateur lorsqu'on clique sur son nom.  
 ✔️ Des détails sur chaque message (contenu, destinataire, score de toxicité, etc.).  
-✔️ Des détails généraux sur l'utilisateur ( longueur moyenne des messages, destinataire le plus courant, score de toxicité moyen et nombre de messages envoyés).
-✔️ Un classement de la personne la moins toxique à la plus toxique en fonction de différents critères.
+✔️ Des détails généraux sur l'utilisateur ( longueur moyenne des messages, destinataire le plus courant, score de toxicité moyen et nombre de messages envoyés).  
+✔️ Un classement de la personne la moins toxique à la plus toxique en fonction de différents critères.  
 
 L’application communique avec un serveur PHP via des requêtes API REST et utilise Retrofit pour gérer les appels réseau.  
 
@@ -74,8 +74,8 @@ Pour installer et configurer le projet, veuillez consulter le document :
 Ce document contient toutes les instructions détaillées pour :  
 ✔️ Installer la base de données MySQL  
 ✔️ Configurer le serveur PHP  
-✔️ Déployer l'API PHP et le bot Python
-✔️ Tester l'API  et le bot
+✔️ Déployer l'API PHP et le bot Python  
+✔️ Tester l'API  et le bot  
 ✔️ Lancer l'application Android  
 ✔️ Déboguer les erreurs courantes  
 
