@@ -62,6 +62,7 @@ TraceCord/
 │── Installation.pdf                             # Document d'installation
 │── Présentation-TraceCord.pdf                   # Diaporama de présentation
 │── Fonctionnement.pdf                           # Document décrivant l'architecture du projet
+│── RACI.pdf                                     # RACI du projet
 ```
 ---
 
