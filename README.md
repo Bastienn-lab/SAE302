@@ -30,39 +30,45 @@ L’application communique avec un serveur PHP via des requêtes API REST et uti
 ```plaintext
 TraceCord/
 │── TraceCordApp/
-│──│── app/
-│   │   ├── src/
-│   │   │   ├── main/
-│   │   │   │   ├── java/com/example/saediscord/
-│   │   │   │   │   ├── MainActivity.java            # Liste des utilisateurs  
-│   │   │   │   │   ├── MessagesActivity.java        # Liste des messages d’un utilisateur  
-│   │   │   │   │   ├── ApiService.java              # Interface Retrofit  
-│   │   │   │   │   ├── ApiClient.java               # Initialisation Retrofit  
-│   │   │   │   │   ├── DatabaseHelper.java          # Gestion des requêtes SQLite/MySQL  
-│   │   │   │   │   ├── Message.java                 # Modèle de données
-│   │   │   │   │   ├── User.java                    # Modèle de données
-│   │   │   │   │   ├── MessagesAdapter.java         # Adapter pour afficher les messages  
-│   │   │   │   ├── res/
-│   │   │   │   │   ├── layout/
-│   │   │   │   │   │   ├── activity_main.xml        # UI liste des utilisateurs  
-│   │   │   │   │   │   ├── activity_messages.xml    # UI liste des messages
-│   │   │   │   │   │   ├── item_message.xml         # 
-│   │   │   │   │   ├── values/
-│   │   │   │   │   │   ├── strings.xml              # Textes de l’UI
-│   │   │   │   │   │   ├── colors.xml               #
-│   │   │   │   │   │   ├── themes.xml               #
-│── TraceCordServer/                                      # Serveur API PHP  
-│   ├── get_users.php                            # Récupération des utilisateurs  
-│   ├── get_messages.php                         # Récupération des messages d’un utilisateur  
-│   ├── config.php                               # Configuration MySQL
-|   ├── bot_discord.py                           # Programme du Bot
-|   ├── DiscordDataProcessor.java                # Code java pour exporter les infos dans la BDD
-|   ├── selected_messages.txt                    # Fichier texte contenant les messages à exporter
-│── README.md                                    # Documentation
-│── Installation.pdf                             # Document d'installation
-│── Présentation-TraceCord.pdf                   # Diaporama de présentation
-│── Fonctionnement.pdf                           # Document décrivant l'architecture du projet
-│── RACI.pdf                                     # RACI du projet
+│── │── java/com/example/saediscord/
+│   |   ├── MainActivity.java            # Liste des utilisateurs  
+│   |   ├── MessagesActivity.java        # Liste des messages d’un utilisateur  
+│   |   ├── ApiService.java              # Interface Retrofit  
+│   |   ├── ApiClient.java               # Initialisation Retrofit  
+│   |   ├── DatabaseHelper.java          # Gestion des requêtes SQLite/MySQL  
+│   |   ├── Message.java                 # Modèle de données (message)  
+│   |   ├── User.java                    # Modèle de données (utilisateur)  
+│   |   ├── MessagesAdapter.java         # Adapter pour afficher les messages  
+│   |   ├── ClassementActivity.java      # Affichage du classement des utilisateurs  
+│   |   ├── ClassementAdapter.java       # Adapter pour afficher le classement  
+│   |   ├── Player.java                  # Modèle de données pour un joueur (classement)  
+│   |   ├── UsersAdapter.java            # Adapter pour afficher la liste des utilisateurs  
+│── │── layout/
+│   |   ├── activity_main.xml        # UI liste des utilisateurs  
+│   |   ├── activity_messages.xml    # UI liste des messages  
+│   |   ├── item_message.xml         # UI pour un message individuel dans la liste  
+│── │── drawable/
+│   |   ├── crown.png                # Image pour le premier du classement  
+│   |   ├── medal_silver.png         # Image pour le deuxième du classement  
+│   |   ├── medal_bronze.png         # Image pour le troisième du classement  
+│   |   ├── logo.png                 # Logo de l’application  
+│   |   ├── ...                      # Autres ressources graphiques  
+│── │── manifests/
+│   |   ├── AndroidManifest.xml      # Déclaration des composants et permissions de l’application  
+│── │── Gradle Scripts/
+│   |   ├── build.gradle.kts         # Configuration des dépendances et du projet Gradle  
+│── TraceCordServer/                                     
+│   ├── get_users.php                            # Récupération des utilisateurs depuis la BDD  
+│   ├── get_messages.php                         # Récupération des messages d’un utilisateur depuis la BDD  
+|   ├── bot_discord.py                           # Programme du Bot Discord pour analyser les messages  
+|   ├── DiscordDataProcessor.java                # Exportation des messages vers la BDD  
+|   ├── DiscordDataProcessor.class               # Fichier compilé du programme Java  
+|   ├── selected_messages.txt                    # Fichier texte contenant les messages à exporter  
+│── README.md                                    # Documentation du projet  
+│── Installation.pdf                             # Guide d’installation du projet  
+│── Présentation-TraceCord.pdf                   # Diaporama de présentation du projet  
+│── Fonctionnement.pdf                           # Explication de l’architecture et des interactions du projet  
+│── RACI.pdf                                     # Rôles et responsabilités de l’équipe (RACI)  
 ```
 ---
 
