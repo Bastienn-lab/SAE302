@@ -45,12 +45,19 @@ TraceCord/
 │   |   ├── UsersAdapter.java            # Adapter pour afficher la liste des utilisateurs  
 │── │── layout/
 │   |   ├── activity_main.xml        # UI liste des utilisateurs  
-│   |   ├── activity_messages.xml    # UI liste des messages  
-│   |   ├── item_message.xml         # UI pour un message individuel dans la liste  
+│   |   ├── activity_messages.xml    # UI liste des messages
+│   |   ├── activity_classement.xml
+│   |   ├── item_message.xml         # UI pour un message individuel dans la liste
+│   |   ├── classement_item.xml
+│   |   ├── item_user.xml
+│   |   ├── background_gradient.xml
 │── │── drawable/
-│   |   ├── crown.png                # Image pour le premier du classement  
-│   |   ├── medal_silver.png         # Image pour le deuxième du classement  
-│   |   ├── medal_bronze.png         # Image pour le troisième du classement  
+│   |   ├── animated_lines.xml
+│   |   ├── gradient_1.xml
+│   |   ├── gradient_2.xml
+│   |   ├── gradient_3.xml
+│   |   ├── gradient_background.xml
+│   |   ├── line_drawable.xml
 │   |   ├── logo.png                 # Logo de l’application  
 │   |   ├── ...                      # Autres ressources graphiques  
 │── │── manifests/
